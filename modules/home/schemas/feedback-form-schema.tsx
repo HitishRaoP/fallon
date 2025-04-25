@@ -6,7 +6,7 @@ export const feedbackFormSchema = z.object({
     }),
     lastname: z.string().min(2, {
         message: "Last name must be at least 2 characters long.",
-    }),
+    }).optional(),
     email: z.string().email({
         message: "Please enter a valid email address (e.g., name@example.com).",
     }),
