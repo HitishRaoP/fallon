@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { HeaderMain } from "@/modules/root/components/header-main";
 import { FooterMain } from "@/modules/root/components/footer-main";
+import { Toaster } from "@/components/ui/sonner"
+import { QueryClientProvider } from "@/components/providers/query-client-provider";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,7 +28,10 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <HeaderMain />
-          {children}
+          <QueryClientProvider>
+            {children}
+          </QueryClientProvider>
+          <Toaster />
           <FooterMain />
         </ThemeProvider>
       </body>

@@ -13,9 +13,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { useFeedbackForm } from '../hooks/use-feedback-form'
+import { FORM_ITEMS } from '../structures/form-items'
+import { LoaderCircleIcon } from 'lucide-react'
 
 export const FeedbackForm = () => {
-  const { form, onSubmit, FORM_ITEMS } = useFeedbackForm()
+  const { form, onSubmit, isPending } = useFeedbackForm()
 
   return (
     <Card>
@@ -43,7 +45,17 @@ export const FeedbackForm = () => {
                 />
               ))
             }
-            <Button size={"lg"} className="w-full my-4" type="submit">Submit</Button>
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isPending}
+              className="w-full my-4 relative flex items-center justify-center gap-2"
+            >
+              {isPending && (
+                <LoaderCircleIcon className="animate-spin" size={20} aria-hidden="true" />
+              )}
+              <span>Submit</span>
+            </Button>
           </form>
         </Form >
       </CardContent>
