@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Feedback System
 
-## Getting Started
+This is a web application built with **Next.js** and **Supabase** for collecting and managing user feedback. It allows users to submit feedback on the home page, while administrators can view all submitted feedback on the admin route.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Home Route (/)
+- **Feedback Form:** Users can submit feedback with their first name, last name, email, and a feedback message.
+- **Data Submission:** When the user submits the form, the feedback is sent to a **Supabase Edge Function** and stored in a **Supabase database**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Admin Route (/admin)
+- **View Feedback:** Admins can view all submitted feedback in a list format.
+- **Data Fetching:** Feedback data is fetched from the Supabase database using the **Supabase JavaScript client**.
+- **Time Formatting:** Submission times are formatted for readability using **Day.js**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
+- **Next.js:** Frontend framework and routing.
+- **Supabase:** Backend services for authentication, database management, and serverless functions.
+- **Shadcn UI:** Component library for building UI elements.
+- **Day.js:** Library for formatting timestamps.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database Structure
+- **Table: feedback**
+  - **first_name**: User's first name (string)
+  - **last_name**: User's last name (string)
+  - **email**: User's email address (string)
+  - **message**: The feedback message (text)
+  - **created_at**: Timestamp when the feedback was submitted (datetime)
